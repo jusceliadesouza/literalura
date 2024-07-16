@@ -1,9 +1,19 @@
 package br.com.alura.literalura.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Autor {
+@Entity
+public class Author {
+
+    public Author(String name, String birth_date, String death_date) {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String birth_date;
     private String death_date;

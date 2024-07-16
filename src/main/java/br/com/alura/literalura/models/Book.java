@@ -1,15 +1,19 @@
 package br.com.alura.literalura.models;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Livro {
+@Entity
+public class Book {
+
+    public Book(String title, String author, String language, int downloads) {
+    }
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
     private String title;
-    @JsonAlias("author_name")
     private String author;
     private String language;
-    @JsonAlias("download_count")
     private int downloads;
 
     // Getters e Setters
@@ -49,7 +53,7 @@ public class Livro {
     public String toString() {
         return """
                ----- Livro -----
-               T\u00edtulo: """ + title + "\n" +
+               Título: """ + title + "\n" +
                 "Autor: " + author + "\n" +
                 "Idioma: " + language + "\n" +
                 "Downloads: " + downloads + "\n";
